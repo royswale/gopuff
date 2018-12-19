@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"time"
 )
 
 // max number, i.e. the bucket size
@@ -40,9 +41,14 @@ func main()  {
 
 	a := make([]int, 0)
 
+	// https://gobyexample.com/random-numbers
+	s := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(s)
+
 	// generate 10 pseudo-random number [0, 100)
 	for i := 0; i < 10; i++ {
-		a = append(a, rand.Intn(T))
+		a = append(a, r.Intn(T))
+		//a = append(a, rand.Intn(T))
 		//fmt.Println(len(a), cap(a))
 	}
 
